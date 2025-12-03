@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<style>
+			* { box-sizing: border-box; }
+			html, body { height: 100%; }
+			body {
+				margin: 0;
+				padding: 0;
+				background: #000;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.video-wrap { position: relative; }
+			/* Ensure video is behind the nav buttons so buttons can receive clicks */
+			video { display: block; max-width: 100%; max-height: 100vh; position: relative; z-index: 1; }
+			.nav-button {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 44px;
+				height: 44px;
+				background: rgba(255,255,255,0.2);
+				color: #fff;
+				border: 0;
+				font-size: 28px;
+				line-height: 44px;
+				text-align: center;
+				cursor: pointer;
+				z-index: 9999;
+				pointer-events: auto;
+			}
+			.nav-button:disabled { opacity: 0.35; cursor: default; }
+			.nav-button.prev { left: 8px; }
+			.nav-button.next { right: 8px; }
+		</style>
+	</head>
+	<body>
+		<div class="video-wrap">
+			<!-- <button class="nav-button prev" id="prevBtn" title="上一個">‹</button> -->
+			<video id="videoPlayer" controls autoplay playsinline></video>
+			<!-- <button class="nav-button next" id="nextBtn" title="下一個">›</button> -->
+		</div>
+
+		<script>
+			// Get video source from URL parameter
+			const params = new URLSearchParams(window.location.search);
+			const videoSrc = params.get('src');
+			const videoEl = document.getElementById('videoPlayer');
+			const prevBtn = document.getElementById('prevBtn');
+			const nextBtn = document.getElementById('nextBtn');
+
+			// Helper: post to parent safely
+			function postToParent(msg) {
+				try { window.parent.postMessage(msg, '*'); } catch (e) {}
+			}
+
+			if (videoSrc) {
+				const source = document.createElement('source');
+				source.src = videoSrc;
+				source.type = 'video/mp4';
+				videoEl.appendChild(source);
+
+				// When metadata loaded, notify parent of intrinsic size so popup can be resized
+				videoEl.addEventListener('loadedmetadata', function () {
+					const w = videoEl.videoWidth || 1280;
+					const h = videoEl.videoHeight || 720;
+					postToParent({ action: 'videoSize', width: w, height: h });
+				});
+			}
+
+			// Navigation buttons inside iframe: notify parent to switch
+			prevBtn.addEventListener('click', function () { postToParent({ action: 'prev' }); });
+			nextBtn.addEventListener('click', function () { postToParent({ action: 'next' }); });
+
+			// Receive hasPrev/hasNext from parent to enable/disable buttons
+			window.addEventListener('message', function (ev) {
+				try {
+					var d = ev.data || {};
+					if (typeof d.hasPrev !== 'undefined') prevBtn.disabled = !d.hasPrev;
+					if (typeof d.hasNext !== 'undefined') nextBtn.disabled = !d.hasNext;
+				} catch (e) {}
+			});
+		</script>
+	</body>
+</html>
