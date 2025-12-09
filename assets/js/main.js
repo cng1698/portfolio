@@ -185,7 +185,13 @@
 			});
 
 	// Main.
-		var $main = $('#main');
+		var $cocos = $('#cocos');
+		var $unity = $('#unity');
+		var $tool = $('#tool');
+		var $cocosMain = $cocos.children('#main');
+		var $unityMain = $unity.children('#main');
+		var $toolMain = $tool.children('#main');
+		var $main = $cocosMain.add($unityMain).add($toolMain);
 
 		// Thumbs.
 			$main.children('.thumb').each(function() {
