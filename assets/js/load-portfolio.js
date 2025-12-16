@@ -4,10 +4,15 @@
     const data = {
         "unity": [
             {
-            //    "title": "宇宙飞船向哪飞U",
-            //     "imagePath": "images/thumbs/01.jpg",
-            //     "videoPath": "images/vedio/宇宙飞船向哪飞_完整版.mp4"
-            }
+               "title": "補習班練習作品",
+                "imagePath": "res/image/unity/DEMO.png",
+                "videoPath": "res/video/unity/DEMO.mp4"
+            },
+            {
+               "title": "官方教學練習作品",
+                "imagePath": "res/image/unity/practice_survive_game.jpg",
+                "videoPath": "res/video/unity/practice_survive_game.mp4"
+            },
         ],
         "cocos": [
             { // 1
