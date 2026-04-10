@@ -13,6 +13,21 @@
                 "imagePath": "res/image/unity/practice_survive_game.jpg",
                 "videoPath": "res/video/unity/practice_survive_game.mp4"
             },
+            {
+               "title": "網路影片練習1",
+                "imagePath": "res/image/unity/practice1.png",
+                "videoPath": "res/video/unity/practice1.mp4"
+            },
+            {
+               "title": "網路影片練習2",
+                "imagePath": "res/image/unity/practice2.png",
+                "videoPath": "res/video/unity/practice2.mp4"
+            },
+            {
+               "title": "網路影片練習3",
+                "imagePath": "res/image/unity/practice3.png",
+                "videoPath": "res/video/unity/practice3.mp4"
+            },
         ],
         "cocos": [
             { // 1
