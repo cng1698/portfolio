@@ -1654,6 +1654,7 @@ input, select, textarea {
 				font-size: 20px;
 				margin: 0;
 				z-index: 2;
+				text-transform: none;
 				/* Place h2 10px above the paragraph which is anchored at bottom:10px */
 				bottom: calc(10px + 1.25em + 10px);
 			}
