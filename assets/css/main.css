@@ -1716,9 +1716,30 @@ input, select, textarea {
 			-webkit-transition-delay: 2.525s;
 			-ms-transition-delay: 2.525s;
 			transition-delay: 2.525s;
+			margin-top: 60px;
+			overflow: visible;
 			height: calc(40vh - 2em);
 			min-height: 20em;
 			width: 25%;
+		}
+
+		#main .thumb > .github-link {
+			align-items: center;
+			top: -60px;
+			display: flex;
+			height: 60px;
+			justify-content: center;
+			padding: 0;
+			position: absolute;
+			right: 10px;
+			width: 160px;
+			z-index: 3;
+		}
+
+		#main .thumb > .github-link .github-icon {
+			height: 100%;
+			margin: 0;
+			width: 100%;
 		}
 
 			#main .thumb:nth-child(1) {

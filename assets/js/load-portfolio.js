@@ -17,12 +17,14 @@
             {
                "title": "逃脫遊戲Demo\n(影片教學練習，嘗試於 Canvas 上加入 Particle System 特效)",
                 "imagePath": "res/image/unity/practice1.png",
-                "videoPath": "res/video/unity/practice1.mp4"
+                "videoPath": "res/video/unity/practice1.mp4",
+                "githubLink": "https://github.com/cng1698/EscapeRoomDemo"
             },
             {
                "title": "跑酷遊戲Demo\n(使用 C# Event 實作物件間事件通知，降低元件耦合。)",
                 "imagePath": "res/image/unity/practice2.png",
-                "videoPath": "res/video/unity/practice2.mp4"
+                "videoPath": "res/video/unity/practice2.mp4",
+                "githubLink": "https://github.com/cng1698/ParkourPractice"
             },
         ],
         "cocos": [
@@ -129,6 +131,7 @@
 
         ],
     };
+    const githubIcon = "res/image/github_icon.png";
 
     // 生成每个分类的内容
     generatePortfolio('unity', data.unity);
@@ -140,7 +143,7 @@
      * @param {string} category - 分类名称 (cocos, unity, tool)
      * @param {Array} items - 作品数组
      */
-    function generatePortfolio(category, items) {
+    function generatePortfolio(category, items = []) {
         console.log(`Generating portfolio for category: ${category}`);
         const container = document.getElementById(category);
         
@@ -193,6 +196,22 @@
         link.appendChild(img);
         article.appendChild(link);
         article.appendChild(h2);
+
+        if (item.githubLink) {
+            const githubLink = document.createElement('a');
+            githubLink.href = item.githubLink;
+            githubLink.className = 'button small github-link';
+            githubLink.target = '_blank';
+            githubLink.rel = 'noopener noreferrer';
+
+            const githubImage = document.createElement('img');
+            githubImage.src = githubIcon;
+            githubImage.alt = '';
+            githubImage.className = 'github-icon';
+
+            githubLink.appendChild(githubImage);
+            article.appendChild(githubLink);
+        }
 
         return article;
     }
