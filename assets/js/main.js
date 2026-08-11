@@ -224,14 +224,9 @@
 			$main.poptrox({
 				baseZIndex: 20000,
 				caption: function($a) {
-
-					var s = '';
-
-					$a.nextAll().each(function() {
-						s += this.outerHTML;
-					});
-
-					return s;
+					// Only show the title in the video popup, not the GitHub button.
+					var $title = $a.next('h2');
+					return $title.length ? $title[0].outerHTML : '';
 
 				},
 				fadeSpeed: 300,
