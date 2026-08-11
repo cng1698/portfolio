@@ -4,9 +4,15 @@
     const data = {
         "unity": [
             {
+               "title": "躲飛鏢小遊戲",
+                "imagePath": "res/image/unity/practice_avoid_dart.png",
+                "videoPath": "res/video/unity/practice_avoid_dart.mp4",
+                "githubLink": "https://github.com/cng1698/PracticeKoala"
+            },
+            {
                "title": "射擊遊戲Demo\n(依照官方教學，並改為手機遊戲，使用虛擬搖桿控制角色移動，加入小地圖)",
                 "imagePath": "res/image/unity/practice_survive_game.jpg",
-                "videoPath": "res/video/unity/practice_survive_game.mp4"
+                "videoPath": "res/video/unity/practice_survive_game.mp4",
             },
             {
                "title": "RPG Demo\n(補習班專案練習)",
